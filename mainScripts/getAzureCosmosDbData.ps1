@@ -9,9 +9,9 @@ $targetFilePath = "$($currentDir)\Azure_CosmosDB_Usage_Report-$($date).csv"
 Get-AzSubscription | ForEach-Object {
     $subscriptionId = $_.Id
     $subscriptionName = $_.Name
-    $subscriptionTags = $_.Tags
-    $TenentID = $_.TenantId
-    $tagcount = $_.Tags.Count
+    #$subscriptionTags = $_.Tags
+    #$TenentID = $_.TenantId
+    #$tagcount = $_.Tags.Count
     Set-AzContext -SubscriptionId $subscriptionId
     Get-AzResourceGroup | ForEach-Object {
         $resourceGroupName = $_.ResourceGroupName
@@ -21,7 +21,7 @@ Get-AzSubscription | ForEach-Object {
             $Department = $_.Tags.Department
             $CostCentre = $_.Tags.CostCenter
             $EnvType = $_.Tags.EnvType
-            $name = (Get-AzResource -ResourceId $cdbid).Name
+            #$name = (Get-AzResource -ResourceId $cdbid).Name
             $metricdata = Get-AzMetric -ResourceId $cdbid -TimeGrain 00:05:00 -MetricName "NormalizedRUConsumption" -AggregationType Maximum -WarningAction Ignore -StartTime (Get-Date).adddays(-30) -EndTime (Get-Date) -DetailedOutput
             $metricdata | ForEach-Object {
                 $metric_used = $_.Data.Maximum | measure -Maximum
