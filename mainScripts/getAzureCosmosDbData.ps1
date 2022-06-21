@@ -4,7 +4,7 @@ $currentDir = $(Get-Location).Path
 $targetFilePath = "$($currentDir)\Azure_CosmosDB_Usage_Report-$($date).csv"
 #$oFilePath = "U:\Azure_CosmosDB_Usage_Report-$($date).csv"
 
-"COSMOS_DB_NAME,SUBSCRIPTION_NAME,RESOURCE_GROUP_NAME,DEPARTMENT,COST_CENTER,ENV_TYPE,METRIC_MAX,MONTHLY_TOTAL_ROUND_COST$" | Out-File $targetFilePath -Append -Encoding ascii
+"COSMOS_DB_NAME,SUBSCRIPTION_NAME,RESOURCE_GROUP_NAME,DEPARTMENT,COST_CENTER,ENV_TYPE,Max_Percentage_30days,MONTHLY_COST" | Out-File $targetFilePath -Append -Encoding ascii
  
 Get-AzSubscription | ForEach-Object {
     $subscriptionId = $_.Id
