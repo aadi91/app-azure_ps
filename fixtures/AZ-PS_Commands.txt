@@ -1,0 +1,30 @@
+#Install AZ Modules In PoweShell
+Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+
+#Connect With AZ Account
+Connect-AzAccount
+
+# Get Azure Resource Groups
+Get-AzResourcegroup - This command returns output
+# Syntax
+Get-AzResourcegroup
+
+# Get Azure Subscriptions
+Get-AzSubscription - This command returns output
+# Syntax
+Get-AzSubscription
+
+
+# Get Azure VM List
+Get-AzVM - This command returns no result/error, just completes the execution and returns nothing
+# Syntax
+Get-AzVM -ResourceGroupName <ResourceGroupName>
+# Example
+Get-AzVM -ResourceGroupName databricks-rg-prodfix-ds-psvoc-eastus2-databricks-01-z3p4dhjbfknss
+
+
+# Select the subscription  
+Select-AzSubscription $subscriptionId
+# Syntax
+Select-AzSubscription <subscriptionName>
+Select-AzSubscription rpu-prod-data-science-01 
